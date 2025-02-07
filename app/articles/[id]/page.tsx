@@ -12,7 +12,7 @@ interface PageProps {
     params: {id: string };
 }
 
-export default async function ArticleDetail({ params }: PageProps) {
+export default function ArticleDetail({ params }: PageProps) {
     const article = articles.find((a) => a.id.toString() === params.id);
 
     if (!article) {
