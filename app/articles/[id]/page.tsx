@@ -1,6 +1,7 @@
 import articles from '@/data/articles.json';
 import { Article } from '@/types/article';
 import LikeButton from '@/components/LikeButton';
+import { InferGetStaticPropsType } from 'next';
 
 // 動的ルートのパスを生成
 export async function generateStaticParams() {
@@ -9,10 +10,10 @@ export async function generateStaticParams() {
     }));
 }
 
-// Next.js の props の型定義
-interface PageProps {
-    params: { id: string };
-}
+// 型定義: `params` を `InferGetStaticPropsType<typeof generateStaticParams>` で取得
+type PageProps = {
+    params: Awaited<ReturnType<typeof generateStaticParams>>[number];
+};
 
 export default function ArticleDetail({ params }: PageProps) {
     // 記事を検索
