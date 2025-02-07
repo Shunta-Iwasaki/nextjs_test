@@ -1,7 +1,6 @@
 import articles from '@/data/articles.json';
 import { Article } from '@/types/article';
 import LikeButton from '@/components/LikeButton';
-import { Metadata } from 'next';
 
 // 動的ルートのパスを生成
 export async function generateStaticParams() {
