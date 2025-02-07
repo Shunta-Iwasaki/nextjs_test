@@ -1,8 +1,18 @@
-import { GetStaticProps, GetStaticPaths } from "next";
+import { notFound } from "next/navigation";
 import articles from "@/data/articles.json";
 
-export default function ArticleDetail({ article }: { article: { title: string; content: string } }) {
-  if (!article) return <p>記事が見つかりません</p>;
+export async function generateStaticParams() {
+  return articles.map((article) => ({
+    id: article.id.toString(), // 🔥 id を string に変換
+  }));
+}
+
+export default function ArticleDetail({ params }: { params: { id: string } }) {
+  const article = articles.find((a) => a.id.toString() === params.id);
+
+  if (!article) {
+    notFound(); // 🔥 記事が見つからない場合は 404 ページを表示
+  }
 
   return (
     <div>
@@ -11,21 +21,3 @@ export default function ArticleDetail({ article }: { article: { title: string; c
     </div>
   );
 }
-
-// 静的生成のための関数
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = articles.map((article) => ({
-    params: { id: article.id.toString() }
-  }));
-
-  return { paths, fallback: false };
-};
-
-// 各記事のデータを取得
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const article = articles.find((a) => a.id.toString() === params?.id);
-
-  return {
-    props: { article }
-  };
-};
