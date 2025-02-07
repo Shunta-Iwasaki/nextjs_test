@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "title": "初めてのNextJs",
+        "content": "NextJsはReactベースのフレームワークです",
+        "imgSrc": "./img/test1.jpg"
+    },
+    {
+        "id": 2,
+        "title": "TypeScriptの基本",
+        "content": "型指定で安全にコードを書くためのTypeScript講習です",
+        "imgSrc": "./img/test2.jpg"
+    }
+]
