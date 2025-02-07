@@ -3,18 +3,16 @@ import{ Article } from '@/types/article';
 import LikeButton from '@/components/LikeButton';
 
 export async function generateStaticParams(): Promise<{ id: string}[]> {
-    return Promise.resolve(
-        articles.map((article: Article) => ({
-            id: article.id.toString(),
-        }))
-    );
+    return articles.map((article: Article) => ({
+        id: article.id.toString(),
+    }));
 }
 
-interface ArticleDetailProps {
+interface PageProps {
     params: {id: string };
 }
 
-export default async function ArticleDetail({ params }: ArticleDetailProps) {
+export default async function ArticleDetail({ params }: PageProps) {
     const article = articles.find((a) => a.id.toString() === params.id);
 
     if (!article) {
