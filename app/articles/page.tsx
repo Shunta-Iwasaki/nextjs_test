@@ -1,3 +1,4 @@
+import LikeButton from '@/components/LikeButton';
 import articles from '@/data/articles.json';
 import { Article } from '@/types/article';
 import Link from 'next/link';
@@ -13,6 +14,7 @@ const Home = () => {
                             {article.title}
                             <img className='size-16' src={article.imgSrc} alt="test" />
                         </Link>
+                        <LikeButton />
                     </li>
                 ))}
             </ul>
