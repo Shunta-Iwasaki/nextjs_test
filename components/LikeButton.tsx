@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-const likeButton = () => {
+const LikeButton = () => {
     const [likeCount, setLikeCount] = useState(0);
 
     return (
@@ -11,4 +11,4 @@ const likeButton = () => {
     );
 };
 
-export default likeButton;
+export default LikeButton;
