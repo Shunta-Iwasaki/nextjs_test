@@ -2,10 +2,12 @@ import articles from '@/data/articles.json';
 import{ Article } from '@/types/article';
 import LikeButton from '@/components/LikeButton';
 
-export async function generateStaticParams() {
-    return articles.map((article: Article) => ({
-        id: article.id.toString(),
-    }));
+export async function generateStaticParams(): Promise<{ id: string}[]> {
+    return Promise.resolve(
+        articles.map((article: Article) => ({
+            id: article.id.toString(),
+        }))
+    );
 }
 
 interface ArticleDetailProps {
